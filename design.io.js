@@ -1,6 +1,8 @@
 
 window.DesignIO = (function() {
 
+  DesignIO.name = 'DesignIO';
+
   function DesignIO(namespace, options) {
     options || (options = {});
     this.callbacks = {};
@@ -32,7 +34,9 @@ window.DesignIO = (function() {
   };
 
   DesignIO.prototype.runCallback = function(name, data) {
-    if (this.callbacks[name]) this.callbacks[name].call(this, data);
+    if (this.callbacks[name]) {
+      this.callbacks[name].call(this, data);
+    }
     return true;
   };
 
@@ -68,7 +72,9 @@ window.DesignIO = (function() {
       if (watcher.id === data.id) {
         watcher.path = data.path;
         watcher.action = data.action;
-        if (watcher.hasOwnProperty(data.action)) watcher[data.action](data);
+        if (watcher.hasOwnProperty(data.action)) {
+          watcher[data.action](data);
+        }
       }
     }
     return this.runCallback(data.action, data);

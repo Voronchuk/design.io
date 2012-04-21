@@ -47,6 +47,6 @@
     "hook.io":            ">= 0.8.0"
   },
   "scripts": {
-    "install": "gem install rb-fsevent --no-ri --no-rdoc"
+    "install": "gem install rb-fsevent rb-inotify --no-ri --no-rdoc"
   }
 }

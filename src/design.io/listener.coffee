@@ -92,5 +92,6 @@ class Listener
 require './listener/mac'
 require './listener/polling'
 require './listener/windows'
+require './listener/linux'
 
 module.exports = Listener

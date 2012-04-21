@@ -43,6 +43,13 @@ class Project
       eval(value)
     else
       value
+
+  getListenerByPlatform: () ->
+    switch process.platform
+      when "linux" then return require("./listener/linux")
+      when "darwin" then return require("./listener/mac")
+      else return require("./listener/mac")
+
   
   constructor: (options = {}) ->
     @root         = File.absolutePath(options.root)
@@ -71,7 +78,7 @@ class Project
       hook.emit "ready", data
       
       @read =>
-        new (require('./listener/mac')) root: @root, ignore: @ignoredPaths, (path, options) =>
+        new (@getListenerByPlatform()) root: @root, ignore: @ignoredPaths, (path, options) =>
           options.namespace = @namespace
           options.paths     = if path instanceof Array then path else [path]
           for path in options.paths
