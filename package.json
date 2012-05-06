@@ -45,8 +45,5 @@
     "express":            ">= 2.5.0",
     "forever":            ">= 0.8.5",
     "hook.io":            ">= 0.8.0"
-  },
-  "scripts": {
-    "install": "gem install rb-fsevent rb-inotify --no-ri --no-rdoc"
   }
 }
